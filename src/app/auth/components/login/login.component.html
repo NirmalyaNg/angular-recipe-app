@@ -1,0 +1,52 @@
+<div class="row mt-3">
+  <div class="col-sm-12 col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+    <div class="card p-4 bg-light">
+      <div class="card-body">
+        <form [formGroup]="loginForm!" (ngSubmit)="handleLogin()">
+          <p class="error" *ngIf="error">{{ error }}</p>
+          <div class="form-group mt-2">
+            <label for="Email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="Email"
+              formControlName="email"
+            />
+            <p *ngIf="isInvalidControl('email')" class="control-error-message">
+              {{ getEmailControlError() }}
+            </p>
+          </div>
+          <div class="form-group mt-2">
+            <label for="Password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="Password"
+              formControlName="password"
+            />
+            <p
+              *ngIf="isInvalidControl('password')"
+              class="control-error-message"
+            >
+              {{ getPasswordControlError() }}
+            </p>
+          </div>
+          <button
+            class="btn btn-success mt-2"
+            type="submit"
+            [disabled]="f!.invalid"
+          >
+            Login
+          </button>
+          <button
+            class="btn btn-warning mt-2 ms-2"
+            type="button"
+            (click)="f!.reset()"
+          >
+            Reset
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="home-page">
+  <div class="home-page-inner">
+    <h1>Recipes App</h1>
+    <p>Start exploring our amazing recipes....</p>
+    <button
+      class="btn btn-warning mt-2"
+      [routerLink]="['/auth', 'login']"
+      *ngIf="!isAuthenticated"
+    >
+      Login
+    </button>
+    <button
+      class="btn btn-warning mt-2"
+      *ngIf="isAuthenticated"
+      [routerLink]="['/recipes']"
+    >
+      Explore Recipes
+    </button>
+  </div>
+</div>
+<div class="mask"></div>

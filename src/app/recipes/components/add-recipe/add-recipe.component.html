@@ -1,0 +1,99 @@
+<div class="row mt-5">
+  <div class="col-sm-12">
+    <div class="card bg-light p-3">
+      <div class="card-body">
+        <h5 class="text-center">Add Recipe</h5>
+        <hr />
+        <form [formGroup]="addRecipeForm!" (ngSubmit)="handleSubmit()">
+          <div class="form-group mt-2">
+            <label>Recipe Title</label>
+            <input type="text" class="form-control" formControlName="title" />
+          </div>
+          <div class="form-group mt-2">
+            <label>Recipe Description</label>
+            <textarea
+              type="text"
+              class="form-control"
+              style="resize: none"
+              formControlName="description"
+            ></textarea>
+          </div>
+          <div class="form-group mt-2">
+            <label>Recipe Image Url</label>
+            <input
+              type="text"
+              class="form-control"
+              (input)="handleImageUrl($event)"
+              formControlName="imageUrl"
+            />
+          </div>
+          <div class="mt-2 recipe-image">
+            <img
+              class="img-fluid"
+              [src]="imageUrl"
+              alt="Recipe Image"
+              *ngIf="f!.get('imageUrl')!.value"
+              appInvalidImage
+            />
+          </div>
+          <div class="form-group mt-2">
+            <label>Ingredients</label>
+            <div formArrayName="ingredients">
+              <button
+                class="btn btn-primary btn-sm mt-2"
+                (click)="onAddIngredient()"
+              >
+                Add Ingredient
+              </button>
+              <ng-container
+                *ngFor="let control of getControls(); let i = index"
+              >
+                <div class="row mt-2" [formGroupName]="i">
+                  <div class="col-sm-4">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Ingredient Name"
+                      formControlName="name"
+                    />
+                  </div>
+                  <div class="col-sm-4">
+                    <input
+                      type="number"
+                      min="1"
+                      class="form-control"
+                      placeholder="Ingredient Amount"
+                      formControlName="amount"
+                    />
+                  </div>
+                  <div class="col-sm-4">
+                    <button
+                      class="btn btn-danger"
+                      (click)="onIngredientDelete(i)"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+          <button
+            class="btn btn-success mt-2"
+            type="submit"
+            [disabled]="f!.invalid"
+          >
+            Add Recipe
+          </button>
+          <button
+            class="btn btn-warning mt-2 ms-2"
+            type="button"
+            (click)="f!.reset()"
+          >
+            Reset
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

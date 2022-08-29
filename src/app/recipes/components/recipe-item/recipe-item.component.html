@@ -1,0 +1,19 @@
+<div class="card mb-3 recipe-item" [routerLink]="['/recipes', recipe.id]">
+  <div class="row g-0">
+    <div class="col-md-3 recipe-image">
+      <img
+        [src]="recipe.imageUrl"
+        class="img-fluid rounded-start"
+        alt="Recipe Image"
+      />
+    </div>
+    <div class="col-md-9">
+      <div class="card-body">
+        <h5 class="card-title">{{ recipe.title }}</h5>
+        <p class="card-text">
+          {{ recipe.description }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

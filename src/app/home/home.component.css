@@ -1,0 +1,36 @@
+.home-page {
+  /* background-image: url("../../assets/images/home-banner.jpg");  */
+  background-image: url("../../assets/images/home-banner.jpg");
+  height: 93vh;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-page-inner {
+  text-align: center;
+  color: white;
+  z-index: 70;
+  letter-spacing: 3px;
+}
+
+.mask {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 56px;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 60;
+}
+
+.btn {
+  transition: all 0.2s ease-out;
+}
+
+.btn:hover {
+  transform: scale(1.3);
+}

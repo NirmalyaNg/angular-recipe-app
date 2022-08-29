@@ -1,0 +1,11 @@
+<div class="row mt-5">
+  <div class="col-sm-12">
+    <button class="my-2 btn btn-warning" (click)="handleAddRecipe()">
+      <i class="fa-solid fa-plus"></i> Add Recipe
+    </button>
+    <app-recipe-item
+      *ngFor="let recipe of recipes"
+      [recipe]="recipe"
+    ></app-recipe-item>
+  </div>
+</div>

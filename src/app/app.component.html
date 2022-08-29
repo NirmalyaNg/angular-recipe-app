@@ -1,0 +1,8 @@
+<app-header></app-header>
+<!-- <app-alert-modal></app-alert-modal> -->
+<app-loading-spinner *ngIf="loadingSpinner$! | async"></app-loading-spinner>
+<div class="row">
+  <div class="col-sm-12">
+    <router-outlet></router-outlet>
+  </div>
+</div>
