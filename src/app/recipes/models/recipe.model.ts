@@ -1,7 +1,7 @@
 export interface Ingredient {
   id?: string;
   name: string;
-  quantity: string;
+  amount: string;
 }
 
 export interface Recipe {

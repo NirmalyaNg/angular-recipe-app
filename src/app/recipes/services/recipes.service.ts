@@ -39,7 +39,14 @@ export class RecipesService {
   }
 
   public fetchSpecificRecipe(id: string): Observable<Recipe> {
-    return this.http.get<Recipe>(this.baseUrl + `recipes/${id}.json`);
+    return this.http.get<Recipe>(this.baseUrl + `recipes/${id}.json`).pipe(
+      map((recipe) => {
+        return {
+          ...recipe,
+          id,
+        };
+      })
+    );
   }
 
   public fetchRecipes(): Observable<Recipe[]> {
@@ -52,6 +59,15 @@ export class RecipesService {
           this._recipes = recipes;
         })
       );
+  }
+
+  public deleteRecipe(id: string) {
+    return this.http.delete(this.baseUrl + `recipes/${id}.json`).pipe(
+      tap(() => {
+        this._recipes = this._recipes.filter((recipe) => recipe.id !== id);
+        this.recipesChanged.next(this._recipes);
+      })
+    );
   }
 
   private transformRecipesData(data: { [key: string]: Recipe }): Recipe[] {
